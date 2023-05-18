@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+</head>
+<body>
+    <h1>Email Validation</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Validate Emails">
+    </form>
+
+   
+
+    <!-- --------------------------------------------- -->
+
+    {% if error %}
+    <p id="error">{{ error }}</p>
+{% endif %}
+
+{% if valid_emails %}
+    <h2>Valid Email Addresses from File</h2>
+    <ul id="valid-emails">
+        {% for email in valid_emails %}
+            <li>{{ email }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<script>
+    // Hide the error message after a certain duration
+    setTimeout(() => {
+        const errorElement = document.getElementById('error');
+        if (errorElement) {
+            errorElement.style.display = 'none';
+        }
+    }, 3000);
+</script>
+
+
+
+     <!-- --------------------------------------------- -->
+
+
+
+
+
+    {% if error %}
+    <p id="error">{{ error }}</p>
+{% endif %}
+
+{% if valid_emails %}
+    <h2>Valid Email Addresses from File</h2>
+    <ul id="valid-emails">
+        {% for email in valid_emails %}
+            <li>{{ email }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<script>
+    // Hide the error message after a certain duration
+    setTimeout(() => {
+        const errorElement = document.getElementById('error');
+        if (errorElement) {
+            errorElement.style.display = 'none';
+        }
+    }, 3000);
+</script>
+
+
+    <h2>Single Email Validation</h2>
+
+    <form method="post" action="/validate_email">
+        <input type="text" name="email" placeholder="Enter email address">
+        <input type="submit" value="Validate">
+    </form>
+
+    {% if email %}
+        {% if is_valid %}
+            <p>{{ email }} is a valid email address.</p>
+        {% else %}
+            <p>{{ email }} is not a valid email address.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
